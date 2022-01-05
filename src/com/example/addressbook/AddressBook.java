@@ -14,8 +14,8 @@ public class AddressBook {
         int i = 0;
         while (i == 0) {
             System.out.println("\n*------------Menu------------*");
-            System.out.println("1.Add Contact\n" + "2.Edit Contact\n" + "3.Remove Contact\n"+
-                    "4.Exit Loop\n");
+            System.out.println("1.Add Contact\n" + "2.Show all Contact\n" + "3.Search Contacts\n" +
+                    "4.Edit Contact\n" + "5.Remove Contact\n" + "6.Exit Loop");
             System.out.println("*----------------------------*");
             System.out.print("Choose option:");
             int option = Integer.parseInt(scanner.nextLine());
@@ -24,12 +24,18 @@ public class AddressBook {
                     addressBook.addContact();
                     break;
                 case 2:
-                    addressBook.editContact();
+                    addressBook.showAllContact();
                     break;
                 case 3:
-                    addressBook.removeContact();
+                    addressBook.searchContact();
                     break;
                 case 4:
+                    addressBook.editContact();
+                    break;
+                case 5:
+                    addressBook.removeContact();
+                    break;
+                case 6:
                     i = 1;
                     break;
                 default:
@@ -59,6 +65,36 @@ public class AddressBook {
         person.setZipcode(Long.parseLong(scanner.nextLine()));
         phoneBook.add(person);
     }
+
+    public void removeContact() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the contact firstName to remove: ");
+        String fName = scanner.nextLine();
+        phoneBook.removeIf(person -> person.getFirstName().equalsIgnoreCase(fName));
+        System.out.println("Successfullu deleted!");
+    }
+    public void searchContact() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the contact firstName");
+        String name = scanner.next();
+        for (Person person : phoneBook) {
+            if (name.equalsIgnoreCase(person.getFirstName())) {
+                System.out.println("Contact Details: \n" + person);
+            }
+        }
+
+    }
+
+    public void showAllContact() {
+        if (phoneBook.isEmpty()) {
+            System.out.println("---> PhoneBook is empty:");
+        } else {
+            for (Person person : phoneBook) {
+                System.out.println(person);
+            }
+        }
+    }
+
     public void editContact() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the contact firstName to edit: ");
@@ -106,13 +142,6 @@ public class AddressBook {
                 }
             }
         }
-    }
-    public void removeContact() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the contact firstName to remove: ");
-        String fName = scanner.nextLine();
-        phoneBook.removeIf(person -> person.getFirstName().equalsIgnoreCase(fName));
-        System.out.println("Succesfully Deleted!");
     }
 }
 
