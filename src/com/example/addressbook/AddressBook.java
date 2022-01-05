@@ -14,7 +14,8 @@ public class AddressBook {
         int i = 0;
         while (i == 0) {
             System.out.println("\n*------------Menu------------*");
-            System.out.println("1.Add Contact\n" + "2.Edit Contact\n" + "3.Exit Loop\n");
+            System.out.println("1.Add Contact\n" + "2.Edit Contact\n" + "3.Remove Contact\n"+
+                    "4.Exit Loop\n");
             System.out.println("*----------------------------*");
             System.out.print("Choose option:");
             int option = Integer.parseInt(scanner.nextLine());
@@ -26,6 +27,9 @@ public class AddressBook {
                     addressBook.editContact();
                     break;
                 case 3:
+                    addressBook.removeContact();
+                    break;
+                case 4:
                     i = 1;
                     break;
                 default:
@@ -102,6 +106,13 @@ public class AddressBook {
                 }
             }
         }
+    }
+    public void removeContact() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the contact firstName to remove: ");
+        String fName = scanner.nextLine();
+        phoneBook.removeIf(person -> person.getFirstName().equalsIgnoreCase(fName));
+        System.out.println("Succesfully Deleted!");
     }
 }
 
