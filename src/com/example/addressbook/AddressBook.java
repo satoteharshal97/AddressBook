@@ -62,7 +62,7 @@ public class AddressBook {
         System.out.println("Enter city:");
         person.setCity(scanner.nextLine());
         System.out.println("Enter zip code:");
-        person.setZipcode(Long.parseLong(scanner.nextLine()));
+        person.setZipcode(Integer.parseInt(scanner.nextLine()));
         phoneBook.add(person);
     }
 
@@ -129,7 +129,7 @@ public class AddressBook {
                         break;
                     case 6:
                         System.out.println("Enter zip code:");
-                        person.setZipcode(Long.parseLong(scanner.nextLine()));
+                        person.setZipcode(Integer.parseInt(scanner.nextLine()));
                         break;
                     case 7:
                         System.out.println("Enter state:");

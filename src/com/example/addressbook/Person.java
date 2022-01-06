@@ -7,10 +7,10 @@ class Person {
     private String city;
     private String state;
     private long phoneNumber;
-    private long zipcode;
+    private int zipcode;
 
     public Person(String firstName, String emailId, String lastName, String city, String state,
-                  long phoneNumber, long zipcode) {
+                  long phoneNumber, int zipcode) {
 
         this.firstName = firstName;
         this.emailId = emailId;
@@ -76,7 +76,7 @@ class Person {
         return zipcode;
     }
 
-    public void setZipcode(long zipcode) {
+    public void setZipcode(int zipcode) {
         this.zipcode = zipcode;
     }
 
