@@ -1,9 +1,13 @@
 package com.example.addressbook;
 
 class Person {
-    private String firstName, emailId;
-    private String lastName, city, state;
-    private long phoneNumber, zipcode;
+    private String firstName;
+    private String emailId;
+    private String lastName;
+    private String city;
+    private String state;
+    private long phoneNumber;
+    private long zipcode;
 
     public Person(String firstName, String emailId, String lastName, String city, String state,
                   long phoneNumber, long zipcode) {
